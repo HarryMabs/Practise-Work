@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.Pane;
 import javafx.event.EventHandler;
@@ -15,10 +16,14 @@ public class SceneController
     /* These FXML variables exactly corrispond to the controls that make up the scene, as designed in Scene 
      * Builder. It is important to ensure that these match perfectly or the controls won't be interactive. */
     @FXML   private Pane backgroundPane;    
-    @FXML   private Button yesButton;
-    @FXML   private Button noButton;
-    @FXML   private Button exitButton;
+    @FXML   private Label labelShape;
+    @FXML   private Label labelCalories;
+    @FXML   private Label labelFlavour;
+    @FXML   private Label labelTopping;
+    @FXML   private Label labelPrice;
     @FXML   private ListView listView;
+    @FXML   private Pane imageDoughnut;
+    @FXML   private Button buttonGoBack;
 
     public SceneController()          // The constructor method, called first when the scene is loaded.
     {
@@ -41,10 +46,14 @@ public class SceneController
          * application won't work. If the control names in Scene Builder don't match the variables this fails. */ 
         System.out.println("Asserting controls...");
         assert backgroundPane != null : "Can't find background pane.";
-        assert yesButton != null : "Can't find yes button.";
-        assert noButton != null : "Can't find yes button.";
-        assert exitButton != null : "Can't find exit button.";
-        assert listView != null : "Can't find list box.";
+        assert labelShape != null : "Can't find shape label.";
+        assert labelCalories != null : "Can't find calories label.";
+        assert labelFlavour != null : "Can't find flavour label.";
+        assert labelTopping != null : "Can't find topping label.";
+        assert labelPrice != null : "Can't find price label.";
+        assert imageDoughnut != null : "Can't find doughtnut image.";
+        assert buttonGoBack != null : "Can't find Go Back button.";
+        assert listView != null : "Can't find List Box.";
 
         /* Next, we load the list of fruit from the database and populate the listView. */
         System.out.println("Populating scene with items from the database...");        
@@ -64,7 +73,7 @@ public class SceneController
 
         stage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 public void handle(WindowEvent we) {
-                    System.out.println("Close button was clicked!");
+                    System.out.println("Go Back Button was Clicked!");
                     Application.terminate();
                 }
             });
@@ -84,7 +93,7 @@ public class SceneController
 
     @FXML   void exitClicked()
     {
-        System.out.println("Exit was clicked!");        
+        System.out.println("Go Back was clicked!");        
         Application.terminate();        // Call the terminate method in the main Application class.
     }
 
